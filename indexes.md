@@ -15,3 +15,13 @@
 - 文件操作，使用 `with...as...` 的便利
 - 队列的操作 `dequeue`
 
+## 1.4
+- 寻找最大或最小的 N 个元素
+- 实际上是用的是堆的算法
+- `heapq.nlargest` 和 `heapq.nsmallest` 方法适用于寻找数目相对较少的项
+- 只想寻找单一的最小或最大元素，使用 `min()` 或 `max()` 更佳
+- 若寻找的数目 N 与可迭代集合的大小相差无几，更好的是
+	1. 将集合进行排序操作 sort
+	2. 对排序后的集合进行截取 sorted(items)[:N], sorted(items)[-N:]
+- 实际上，`heapq.nlargest` 和 `heapq.nsmallest` 会根据调用行为来决定使用哪种策略
+
