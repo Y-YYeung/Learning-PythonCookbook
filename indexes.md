@@ -68,3 +68,32 @@ d = defaultdict(list/set)
 [<defaultdict>][<aKey>].append(<aValue>)
 ```
 
+# 1.7
+- 有序字典
+- 所用方法
+
+```py
+from collections import OrderedDict
+
+# 创建一个有序字典
+d = OrderedDict()
+
+# 按照普通的方法添加元素即可
+
+import json
+
+# 通过字典生成 json，其实这叫 序列化
+str = json.dumps(d) # 生成 json 的字符串
+dump([<{}>]) # 生成 file-like object，需要文件操作
+
+# 反序列化
+json.loads()
+json.load()
+``` 
+
+- 注意
+	- [<OrderDict>] 维护一个 list 来记录字典的元素的添加顺序
+	- 添加后，对现存 key 的修改并不会改变其添加顺序
+	- OrderedDict 实例空间大小是一般字典的2倍或有多，需要兼顾性能考虑是否采用
+
+
