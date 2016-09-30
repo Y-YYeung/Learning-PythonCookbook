@@ -53,3 +53,18 @@ acsii() # 使用 ascii 码打印，并转义非 acsii 码
 
 - tuple 的自动比较
 
+## 1.6
+- 映射多个值到字典中，类似字典中包含数组的样子
+- 给字典中不存在的 key 赋值，会抛出 `KeyError` 异常。通常需要检测字典中是否存在一个 key，然后再进行操作。然而，这可以简化
+- 所用方法
+
+```py
+from collections import defaultdict
+
+# 创建一个字典，默认其 value 为 list/set
+d = defaultdict(list/set)
+
+# 只需要专注于添加元素，不必考虑是否存在 key
+[<defaultdict>][<aKey>].append(<aValue>)
+```
+
