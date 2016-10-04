@@ -97,3 +97,21 @@ json.load()
 	- OrderedDict 实例空间大小是一般字典的2倍或有多，需要兼顾性能考虑是否采用
 
 
+# 1.8
+- 字典计算
+- 使用场景之一
+	- 使用字典中的 value 作为排序依据，而不是默认的 key'
+- 所用方法
+
+```py
+# 接受多个可迭代对象，进行合并
+# 合并方法：将每个可迭代对象的相同位置的元素合并成一个 tuple，通过 yield 返回
+zip(* iterables)
+
+# 这两个方法可以使用可选参数 key 来指定用于排序的依据
+min()
+max()
+```
+
+- [`zip()` 实现](https://docs.python.org/3/library/functions.html?highlight=zip#zip)
+
