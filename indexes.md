@@ -68,7 +68,7 @@ d = defaultdict(list/set)
 [<defaultdict>][<aKey>].append(<aValue>)
 ```
 
-# 1.7
+## 1.7
 - 有序字典
 - 所用方法
 
@@ -97,7 +97,7 @@ json.load()
 	- OrderedDict 实例空间大小是一般字典的2倍或有多，需要兼顾性能考虑是否采用
 
 
-# 1.8
+## 1.8
 - 字典计算
 - 使用场景之一
 	- 使用字典中的 value 作为排序依据，而不是默认的 key'
@@ -114,4 +114,37 @@ max()
 ```
 
 - [`zip()` 实现](https://docs.python.org/3/library/functions.html?highlight=zip#zip)
+
+## 1.9
+- 从两个字典中找相同
+- 集合(set) 运算
+
+- 所用方法
+
+
+```py
+# 返回一个 key-view 对象
+# 该对象支持一般的集合运算：unions, intersections, differences 
+[<dictionary>].keys()
+
+# 返回一个 items-view 对象，包含键值对
+# 支持一般的集合操作，支持字典间键值对的比较
+[<dictionary>].items()
+
+# 不支持集合操作，有需要时，可手动将结果转换为集合
+[<dictionary>].values()
+```
+
+## 1.10
+- 移除序列中重复的元素，并维持顺序
+- 使用一个临时变量集合(set)来剔除重复元素
+- 分两种类型
+	- 序列中的元素是 hashable
+		- **可以直接**将元素添加到 set 中
+	- 序列中的元素是 unhashable
+		- **不可直接**将元素添加到 set 中
+		- 从 unhashable 的元素中寻找其 hashable 的属性来当作特征，放到 set 中用于剔除
+- `yield` 语句
+	- 中途返回
+	- 其中一个好处：调用普通函数时，在函数中的创建的临时变量，并不可以在作用域（函数体）外使用，函数执行完成之后便销毁。但使用 `yield` 语句时，函数体中的临时变量，可看作超越了这一限制。如在 1.10.py 中，通过 dedup2 函数创建一个 list，创建的过程便是不断地通过 `yield` 语句实现。`yield` 语句生成返回一个结果给 list 创建的过程，而函数执行过程中的临时变量 seen 并没有被销毁，而是保留下来。
 
